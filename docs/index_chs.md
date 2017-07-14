@@ -2,9 +2,9 @@
 使用左侧'View the Project on GitHub'链接来返回原项目页面。  
 
 ## 目录
-1. [概述](#Introduction)
-2. [文档目录](#Project_Files)
-3. [项目计划](#Plans)
+1. [概述](#introduction)
+2. [文档目录](#project_files)
+3. [项目计划](#plans)
 
 
 ## Introduction  
@@ -18,10 +18,10 @@
 
 ## Plans  
 **加粗**代表当前进行的大部分，其紧接着就是对应的子计划。  
-### 实验二_ping测试 - 阅读代码阶段  
-- [ ] **proto结构体**  
-- [ ] 主函数运行原理  
+1. 实验二_ping测试 - 阅读代码阶段  
+- [] **proto结构体**  
+- [] 主函数运行原理  
 
-### 实验三_chat简易聊天工具  
-- [ ] client  
-- [ ] server  
+2. 实验三_chat简易聊天工具 - 阅读代码阶段  
+- [] client  
+- [] server  
