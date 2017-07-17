@@ -1,5 +1,6 @@
 ﻿[返回首页](https://rushftk.github.io/SLT_ToolsKit/index_chs)
-# How_To_Deploy_This_Project_In_New_Environment
+_最后更新日期，2017-07-15_
+# How_To_Deploy
 ## 实验二：简易ping测试工具
 ### 下载项目文件
 说明：
