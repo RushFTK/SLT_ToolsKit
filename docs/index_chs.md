@@ -28,4 +28,4 @@
 - [] server  
 
 ## Relatived_Links
-1. 在一个新的环境下部署本项目，可以参考项目doc目录下的``计算机网络课程设计.pdf_课程指导书``([点此](https://github.com/RushFTK/SLT_ToolsKit/raw/master/docs/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1.pdf)下载浏览)，或[点此](https://github.com/RushFTK/SLT_ToolsKit/blob/master/docs/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1.pdf)在线阅读；也可以参考[该页面](https://rushftk.github.io/SLT_ToolsKit/tutorial_deploy_chs)中的简易教程。  
+1. 在一个新的环境下部署本项目，可以参考项目doc目录下的``计算机网络课程设计.pdf_课程指导书``([点此](https://github.com/RushFTK/SLT_ToolsKit/raw/master/docs/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1.pdf)下载浏览，或[点此](https://github.com/RushFTK/SLT_ToolsKit/blob/master/docs/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%AF%BE%E7%A8%8B%E8%AE%BE%E8%AE%A1.pdf)在线阅读)；也可以参考[该页面](https://rushftk.github.io/SLT_ToolsKit/tutorial_deploy_chs)中的简易教程。  

@@ -1,8 +1,42 @@
-﻿[返回首页](https://rushftk.github.io/SLT_ToolsKit/index_chs)
-_最后更新日期，2017-07-15_
-# How_To_Deploy
-## 实验二：简易ping测试工具
-### 下载项目文件
+﻿[返回首页](https://rushftk.github.io/SLT_ToolsKit/index_chs)  
+_最后更新日期，2017-07-17_  
+# How_To_Deploy  
+了解与在本地部署项目的快速指南，for English tutorial,see also [here](https://rushftk.github.io/SLT_ToolsKit/tutorial_deploy).  
+## Menu  
+1.[目录](#menu)  
+2.[快速开始](#quick_start)  
+3.[附加说明](#additional_information)  
+
+## Quick_Start  
+### 配置开发环境  
+现在处于理解代码阶段，还**未**决定使用的开发环境。  
+实验二预计使用gcc编译器，在Linux下进行编译运行。(可以使用"计算机系统结构课设"中提供的gaomx虚拟机。)  
+实验三预计使用Microsoft Visual Studio 2017。(或者使用Eclipse也有可能)  
+(实验三可能会使用Python或C#重新进行工程构建。具体看情况商议而定，如果要使用Python，推荐使用JetBrain的PyCharm。)  
+### 下载项目  
+使用Git管理工具clone项目到本地。  
+Windows、MacOS下推荐使用的Git管理工具为[SourceTree](https://www.sourcetreeapp.com/)，如果需要项目的修改权限，请使用Github账号注册的邮箱邮件至867871766@qq.com，我会给予权限。  
+Linux下直接使用Terimal版本的git即可。  
+本项目的git网址为：https://github.com/RushFTK/SLT_ToolsKit.git  
+### 关键文件说明  
+template_program/simple_ping 实验二示例程序文件集  
+template_program/simple_chat 实验三示例程序文件集  
+task2/ 实验二实验文件目录  
+task3/ 实验三实验文件目录  
+### 规约说明  
+1. (除非在初期)，推荐在进行某个部分更新时，单独开个分支(branch)，最后大家审核完后合并到主分支上(merge to master)。以免冲突。  
+2. 尽可能的令程序调用接口，没有实现的接口可以直接抛出未实现异常。  
+
+
+## Additional_Information
+### SourceTree的安装与使用  
+
+### 指导书上关于gcc编译的使用摘要  
+
+
+## 草稿
+### 实验二：简易ping测试工具
+#### 下载项目文件
 说明：
 如果使用‘计算机系统结构’提供的RedHat Linux(gaomxvx)，那么安装软件应使用yum指令，下面的说明中，**均未在该环境下进行测试。**  
 笔者使用的Ubuntu(+mate shell)是使用apt-get安装软件的。  
