@@ -20,7 +20,7 @@ Linux下直接使用Terimal版本的git即可。
 本项目的git网址为：https://github.com/RushFTK/SLT_ToolsKit.git  
 ### 连接文件至本地的开发环境  
 在本地环境新建Project。如果可能，请不要在clone的目录下新建Project，而是选择在其他目录下新建Project后，将源代码文件链接过去。因为这样做能保证该项目文件夹尽可能的干净，没有编译、连接等文件。  
-如果为了本地磁盘管理方便而需要在clone的目录下新建Project  
+如果为了本地磁盘管理方便而需要在clone的目录下新建Project，请将项目文件加入到.gitignore中，使其不参与版本管理从而不进行上传。  
 
 ### 关键文件说明  
 **template_program/simple_ping** 实验二示例程序文件集  
