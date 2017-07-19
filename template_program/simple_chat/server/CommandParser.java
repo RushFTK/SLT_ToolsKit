@@ -1,4 +1,4 @@
-package com.cncd.ch04.server;
+package simple_chat.server;
 public interface CommandParser {
     
     public void setDataSource(DataSource ds);

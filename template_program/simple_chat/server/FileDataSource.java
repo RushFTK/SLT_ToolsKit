@@ -1,4 +1,4 @@
-package com.cncd.ch04.server;
+package simple_chat.server;
 import java.util.*;
 import java.security.*;
 import java.io.*;
