@@ -41,35 +41,9 @@ Linux下直接使用Terimal版本的git即可。
 ![add_extendfile_step3](pics/tutorial_deploy/eclipse_addextendfile_step3.png "Eclipse_增加外部文件_第三步")  
 在弹出的窗口中，在`Linked folder location:`处填入`(自己clone的路径)\template_program`(蓝色)，或点击`Browse..`(绿色)在资源管理器中指定对应目录，由于该文件夹下没有其他干扰的java文件，因此点击`Finish`(红色)。  
 回到第二步的界面，确认设置无误后，点击`Apply and Close`。  
+### 常用git指令
+
 
 ### SourceTree的安装与使用  
 
 ### 指导书上关于gcc编译的使用摘要  
-
-
-## 草稿
-### 实验二：简易ping测试工具
-#### 下载项目文件
-说明：
-如果使用‘计算机系统结构’提供的RedHat Linux(gaomxvx)，那么安装软件应使用yum指令，下面的说明中，**均未在该环境下进行测试。**  
-笔者使用的Ubuntu(+mate shell)是使用apt-get安装软件的。  
-1. 下载与部署git  
-确保环境联网，以及你拥有系统的管理员权限。  
-在terminal中输入如下指令：  
-
-(1)apt-get
-
-bash
-```
-sudo apt-get install git
-```
-
-(2)yum
-
-bash
-```
-sudo yum git
-
-```
-
-2. 克隆本项目到本地硬盘  

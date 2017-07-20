@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # upgrade system
 sudo apt-get update && sudo apt-get install
 # upgrade git in Ubuntu/Debian
