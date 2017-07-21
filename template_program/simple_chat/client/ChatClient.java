@@ -1,4 +1,4 @@
-package simple_chat.client;
+Ôªøpackage simple_chat.client;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -23,7 +23,7 @@ public class ChatClient extends JFrame implements KeyListener, ActionListener, F
     }
     public void uiInit() {
         setLayout(new BorderLayout());
-        //¥¥Ω®North
+        //ÂàõÂª∫North
         northPanel = new JPanel(new GridLayout(0,2));
         northPanel.add(new JLabel("Host address:"));
         northPanel.add(txtHost = new JTextField(ChatClient.serverText));
@@ -44,14 +44,14 @@ public class ChatClient extends JFrame implements KeyListener, ActionListener, F
         txtPort.addFocusListener(this);
         buttonConnect.addKeyListener(this);
         this.add(northPanel, BorderLayout.NORTH);
-        //¥¥Ω®Sourth
+        //ÂàõÂª∫Sourth
         southPanel = new JPanel();
         southPanel.add(msgWindow = new JTextField(20));
         southPanel.add(buttonSend = new JButton("Send"));
         buttonSend.addActionListener(this);
         msgWindow.addKeyListener(this);
         add(southPanel, BorderLayout.SOUTH);
-        //¥¥Ω®Center
+        //ÂàõÂª∫Center
         historyWindow = new ClientHistory();
         sc = new JScrollPane(historyWindow);
         sc.setAutoscrolls(true);
@@ -78,7 +78,7 @@ public class ChatClient extends JFrame implements KeyListener, ActionListener, F
                 ck.addClient(this);
                 addMsg("<font color=\"#00ff00\">connected! Local Port:" + ck.getLocalPort() + "</font>");
             } else {
-                addMsg("<font color=\"#ff0000\">connect failed£°</font>");
+                addMsg("<font color=\"#ff0000\">connect failedÔºÅ</font>");
             }
         } catch(Exception e) { e.printStackTrace(); }
     }

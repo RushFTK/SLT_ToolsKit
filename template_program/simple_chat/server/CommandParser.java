@@ -1,4 +1,4 @@
-package simple_chat.server;
+﻿package simple_chat.server;
 public interface CommandParser {
     
     public void setDataSource(DataSource ds);

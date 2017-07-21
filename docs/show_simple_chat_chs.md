@@ -11,7 +11,7 @@ _最后更新日期，2017-07-19_
 ### 成功运行时  
 ![server_sucessuful](pics/show_template_chat/server_sucessful.png "服务器端成功运行时")  
 运行Server目录下的`MainServer.java`，其为控制台应用程序，运行成功如上图所示。可以看到被设置的默认工作路径以及运行的端口。**除非终止程序，否则服务器端将一直进行运行。**  
-![client_sucessuful](pics/show_template_chat/clinet_sucessful.png "客户端成功运行时")  
+![client_sucessuful](pics/show_template_chat/client_successful.png "客户端成功运行时")  
 运行Client目录下的`ChatClient.java`，其为JPanel生成的图形界面程序，在服务器已经运行的情况下，输入合法的Nickname，运行成功如上图所示。可以看到，在一个客户端上使用下面的对话框与send发送消息，存在回显，另一个客户端也可以看到  
 
 ### 错误  

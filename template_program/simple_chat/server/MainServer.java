@@ -1,4 +1,4 @@
-package simple_chat.server;
+﻿package simple_chat.server;
 import java.net.*;
 import java.io.*;
 public class MainServer extends Thread {
