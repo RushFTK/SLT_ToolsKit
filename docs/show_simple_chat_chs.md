@@ -32,7 +32,29 @@ _最后更新日期，2017-07-19_
 4.  界面友好性：增加帮助按钮，简要介绍用户程序使用方法。  
 5.  界面友好性：服务器端异步的支持输入指令，或者增加gui模式。  
 
-对于2，一个可能的方案是：客户端gui增加一个`Label`，当出现异常时：`label.text = exception.message`  
+~~对于2，一个可能的方案是：客户端gui增加一个`Label`，当出现异常时：`label.text = exception.message`~~   
+上面的方法经过测试后发现，虽然Traceback会报告存在对应的Exception(例如connect refused)，但是如果直接输出Exception.message仅会输出'NullPointerExcepiton'。原因正在研究中。  
 
-## Analyze
-下面对示例程序的结构进行分析。  
+[返回顶部](#show_simple_chat)  
+
+## Analyze  
+下面对示例程序的结构进行分析。在下面就将对  
+### Client  
+由于其是图形界面，因此包含[对界面元素分析](#client_ui)和[对客户端核心方法的分析](#client_menthod)
+#### client_ui  
+客户端采用了JPanel组织的图形界面，在下图中将展示该界面，并显示各控件的名称  
+![client_ui](pics/show_template_chat/UI_analyze.png)  
+其中，每个控件名称后紫色方括号内的文字代表了他包含的匿名监听器的类型。存在匿名监听器的控件，可以通过调用方法，得知监听器所对应的事件是在哪个控件上发生的  
+**A**代表含有`ActionListener`，即事件监听器，捕捉执行控件的时候的事件(例如按下按钮)。  
+**K**代表`KeyListener`，即键盘监听器，捕捉键盘输入。  
+**F**代表`FocusListener`，即焦点监听器，捕捉控件是否在焦点状态(比如鼠标指向或者键盘输入符在这个控件中)。  
+`Event.getSource()`能够返回发生Event的控件。例如，当将鼠标指针指向txtNick上时，`FocusEvent.getSource()`返回`txtNick`  
+对于控件的操作，`ClientKernel.java`中已经封装了部分方法进行控制，例如使用`getMsg(String)`就可以将信息打在historyWindows上。  
+此外，一些对UI控制的方法并**没有**被使用，比如clear()方法，这也是一个扩展的机会。  
+#### client_menthod  
+源程序中很多方法结构简单，注释中已经说明，在下面，将对注释中标有**核心方法**字样的方法进行说明。  
+
+[返回分析头部](#analyze)，[返回顶部][Go_Back_Top]
+
+
+[Go_Back_Top]:#show_simple_chat
