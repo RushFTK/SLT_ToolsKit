@@ -1,5 +1,5 @@
 ﻿[返回首页](https://rushftk.github.io/SLT_ToolsKit/index_chs)  
-_最后更新日期，2017-07-22_  
+_最后更新日期，2017-07-23_  
 # show_simple_chat  
 这里将说明教师给予的**实验三示例程序**的运行情况及结构说明  
 ## Menu
@@ -35,10 +35,10 @@ _最后更新日期，2017-07-22_
 ~~对于2，一个可能的方案是：客户端gui增加一个`Label`，当出现异常时：`label.text = exception.message`~~   
 上面的方法经过测试后发现，虽然Traceback会报告存在对应的Exception(例如`connect refused`)，但是如果直接输出`Exception.message`仅会输出`NullPointerExcepiton`。原因正在研究中。  
 
-[返回顶部](#show_simple_chat)  
+[返回顶部][Go_Back_Top]  
 
 ## Analyze  
-下面对示例程序的结构进行分析。在下面就将对Clinet和Server的代码及方法分别进行分析。  
+下面对示例程序的结构进行分析。在下面就将对[Clinet](#client)和[Server](#server)的代码及方法分别进行分析。  
 ### Client  
 由于其是图形界面，因此包含[对界面元素分析](#client_ui)和[对客户端核心方法的分析](#client_menthod)
 #### client_ui  
@@ -54,7 +54,10 @@ _最后更新日期，2017-07-22_
 #### client_menthod  
 源程序中很多方法结构简单，注释中已经说明，在下面，将对注释中标有**核心方法**字样的方法进行说明。  
 
-[返回分析头部](#analyze)，[返回顶部][Go_Back_Top]
+[返回分析头部](#analyze)，[返回顶部][Go_Back_Top]  
+### Server  
 
+
+[返回分析头部](#analyze)，[返回顶部][Go_Back_Top]  
 
 [Go_Back_Top]:#show_simple_chat
