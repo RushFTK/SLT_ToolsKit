@@ -89,7 +89,9 @@ public class ClientKernel {
 }
 //核心：向远端发送消息的线程
 class ClientMsgSender extends Thread {
+	//Sender要使用Socket链接
     private Socket s;
+    //自己所从属的客户端核心(为什么要记录？)
     private ClientKernel ck;
     private LinkedList msgList;
     private boolean running = true;
@@ -100,6 +102,8 @@ class ClientMsgSender extends Thread {
         msgList = new LinkedList();
         start();
     }
+    //synchronized 类似于临界区，保证了多线程中，同一时刻只有一个线程调用他。
+    //显然地，输出流属于共享资源，需要加界保护。
     public synchronized void addMessage(String msg) {
         msgList.addLast(msg);
     }
@@ -114,6 +118,7 @@ class ClientMsgSender extends Thread {
             DataOutputStream dataOut = new DataOutputStream(s.getOutputStream());
             while(running) {
                 while(msgList.size()>0) {
+                	//removeFirst本质上与pop类似。
                     String msg = ((String)(msgList.removeFirst()));
                     char[] data = msg.toCharArray();
                     for(int i=0;i<data.length;i++) dataOut.write((int)data[i]);

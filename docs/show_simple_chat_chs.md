@@ -1,5 +1,5 @@
 ﻿[返回首页](https://rushftk.github.io/SLT_ToolsKit/index_chs)  
-_最后更新日期，2017-07-19_  
+_最后更新日期，2017-07-22_  
 # show_simple_chat  
 这里将说明教师给予的**实验三示例程序**的运行情况及结构说明  
 ## Menu
@@ -33,16 +33,16 @@ _最后更新日期，2017-07-19_
 5.  界面友好性：服务器端异步的支持输入指令，或者增加gui模式。  
 
 ~~对于2，一个可能的方案是：客户端gui增加一个`Label`，当出现异常时：`label.text = exception.message`~~   
-上面的方法经过测试后发现，虽然Traceback会报告存在对应的Exception(例如connect refused)，但是如果直接输出Exception.message仅会输出'NullPointerExcepiton'。原因正在研究中。  
+上面的方法经过测试后发现，虽然Traceback会报告存在对应的Exception(例如`connect refused`)，但是如果直接输出`Exception.message`仅会输出`NullPointerExcepiton`。原因正在研究中。  
 
 [返回顶部](#show_simple_chat)  
 
 ## Analyze  
-下面对示例程序的结构进行分析。在下面就将对  
+下面对示例程序的结构进行分析。在下面就将对Clinet和Server的代码及方法分别进行分析。  
 ### Client  
 由于其是图形界面，因此包含[对界面元素分析](#client_ui)和[对客户端核心方法的分析](#client_menthod)
 #### client_ui  
-客户端采用了JPanel组织的图形界面，在下图中将展示该界面，并显示各控件的名称  
+客户端采用了JPanel组织的图形界面，在下图中将展示该界面，并显示各控件的名称(红色与绿色部分)  
 ![client_ui](pics/show_template_chat/UI_analyze.png)  
 其中，每个控件名称后紫色方括号内的文字代表了他包含的匿名监听器的类型。存在匿名监听器的控件，可以通过调用方法，得知监听器所对应的事件是在哪个控件上发生的  
 **A**代表含有`ActionListener`，即事件监听器，捕捉执行控件的时候的事件(例如按下按钮)。  
