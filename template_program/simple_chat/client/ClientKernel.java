@@ -48,11 +48,13 @@ public class ClientKernel {
     public int getLocalPort() {
         return sock.getLocalPort();
     }
+    //停止先前的信息发送相关数据存储结构(切断与服务器的链接)
     public void dropMe() {
         System.out.println("Drop ME!!!");
         cms.drop();
         cml.drop();
         dropMe = true;
+        //等待发送消息的截止
         while(cml.hasStoped() && cms.hasStoped()) pause(5);
     }
     public void sendMessage(String str) {
@@ -85,6 +87,7 @@ public class ClientKernel {
         new ClientKernel("localhost", 1984);
     }
 }
+//核心：向远端发送消息的线程
 class ClientMsgSender extends Thread {
     private Socket s;
     private ClientKernel ck;

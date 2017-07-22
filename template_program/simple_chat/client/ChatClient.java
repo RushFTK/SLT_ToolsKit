@@ -16,6 +16,7 @@ public class ChatClient extends JFrame implements KeyListener, ActionListener, F
     ClientHistory historyWindow;
     private String lastMsg = "";
     /** Creates a new instance of Class */
+    //构造方法(用于Ctrl+F查找的注释标签，后很多显而易见的注释同)
     public ChatClient() {
         uiInit();
         txtHost.setText("127.0.0.1");
@@ -57,6 +58,7 @@ public class ChatClient extends JFrame implements KeyListener, ActionListener, F
         sc.setAutoscrolls(true);
         this.add(sc, BorderLayout.CENTER);
     }
+   //主函数
    public static void main(String args[]) {
         ChatClient client = new ChatClient();
         client.setTitle(client.appName);
@@ -69,6 +71,7 @@ public class ChatClient extends JFrame implements KeyListener, ActionListener, F
     public void addMsg(String str) {
         historyWindow.addText(str);
     }
+    //核心方法，建立与服务器的链接
     private void connect() {
         try {
             if(ck!=null) ck.dropMe();
@@ -76,12 +79,16 @@ public class ChatClient extends JFrame implements KeyListener, ActionListener, F
             ck.setNick(txtNick.getText());
             if(ck.isConnected()) {
                 ck.addClient(this);
+                //addMsg就是封装了一个对historyWindows增加最后一行的方法。
                 addMsg("<font color=\"#00ff00\">connected! Local Port:" + ck.getLocalPort() + "</font>");
             } else {
                 addMsg("<font color=\"#ff0000\">connect failed！</font>");
             }
-        } catch(Exception e) { e.printStackTrace(); }
+        } catch(Exception e) { 
+        	addMsg("Error Occur:" + e.getMessage());
+        	}
     }
+    //核心方法，调用sendMessage向远端发送信息
     private void send() {
         String toSend = msgWindow.getText();
         ck.sendMessage(toSend);
@@ -90,32 +97,41 @@ public class ChatClient extends JFrame implements KeyListener, ActionListener, F
     }
     public void keyPressed(KeyEvent e) {
     }
+    //KeyEvent.getSource()返回控件对象，代表事件的来源。只有拥有KeyListener的控件才会被识别
     public void keyReleased(KeyEvent e) {
         if(e.getSource() == msgWindow && e.getKeyCode() == KeyEvent.VK_UP) msgWindow.setText(lastMsg);
     }
+    //这里仅设定了按下回车后不同按钮的行为
     public void keyTyped(KeyEvent e) {
         if(e.getKeyChar() ==KeyEvent.VK_ENTER) {
+        	//聊天信息回车上屏
             if(e.getSource() == msgWindow) send();
+            //Nick回车当做按下"Connect处理，并将焦点移动到聊天框"
             if(e.getSource() == txtNick) { connect(); msgWindow.requestFocus(); }
+            //其余只是将焦点移动到下一行
             if(e.getSource() == txtHost) txtPort.requestFocus();
             if(e.getSource() == txtPort) txtNick.requestFocus();
         }
     }
+    //按下按钮后的操作
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==buttonConnect) connect();
         if(e.getSource()==buttonSend) send();
     }
+    //当鼠标放上去时，自动输入框内清除原先的字段以便于输入
     public void focusGained(FocusEvent e) {
         if(e.getSource()==txtHost && txtHost.getText().equals(ChatClient.serverText)) txtHost.setText("");
         if(e.getSource()==txtPort && txtPort.getText().equals(ChatClient.portText)) txtPort.setText("");
         if(e.getSource()==txtNick && txtNick.getText().equals(ChatClient.nickText)) txtNick.setText("");
     }
+    //与上面的事件对称，失去鼠标焦点时自动将原先的内容回填
     public void focusLost(FocusEvent e) {
        if(e.getSource()==txtPort && txtPort.getText().equals("")) txtPort.setText(ChatClient.portText);
        if(e.getSource()==txtHost && txtHost.getText().equals("")) txtHost.setText(ChatClient.serverText);
        if(e.getSource()==txtNick && txtNick.getText().equals(ChatClient.nickText)) 
                                                             txtNick.setText(ChatClient.nickText);
     }
+    //构造中间的消息事件框，使用html显示
     class ClientHistory extends JEditorPane {
         public ClientHistory() {
             super("text/html", "" + ChatClient.appName);
