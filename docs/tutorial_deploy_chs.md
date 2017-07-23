@@ -1,4 +1,4 @@
-﻿[返回首页](https://rushftk.github.io/SLT_ToolsKit/index_chs)  
+[返回首页](https://rushftk.github.io/SLT_ToolsKit/index_chs)  
 _最后更新日期，2017-07-19_  
 # How_To_Deploy  
 了解与在本地部署项目的快速指南，for English tutorial,see also [here](https://rushftk.github.io/SLT_ToolsKit/tutorial_deploy).  

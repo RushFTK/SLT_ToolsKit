@@ -1,4 +1,4 @@
-﻿[返回首页](https://rushftk.github.io/SLT_ToolsKit/index_chs)  
+[返回首页](https://rushftk.github.io/SLT_ToolsKit/index_chs)  
 _最后更新日期，2017-07-23_  
 # show_simple_chat  
 这里将说明教师给予的**实验三示例程序**的运行情况及结构说明  
@@ -39,6 +39,7 @@ _最后更新日期，2017-07-23_
 
 ## Analyze  
 下面对示例程序的结构进行分析。在下面就将对[Clinet](#client)和[Server](#server)的代码及方法分别进行分析。  
+
 ### Client  
 由于其是图形界面，因此包含[对界面元素分析](#client_ui)和[对客户端核心方法的分析](#client_menthod)
 #### client_ui  
@@ -55,6 +56,7 @@ _最后更新日期，2017-07-23_
 源程序中很多方法结构简单，注释中已经说明，在下面，将对注释中标有**核心方法**字样的方法进行说明。  
 
 [返回分析头部](#analyze)，[返回顶部][Go_Back_Top]  
+
 ### Server  
 
 

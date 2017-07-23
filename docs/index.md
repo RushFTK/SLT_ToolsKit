@@ -1,2 +1,2 @@
-﻿## Add title here  
+## Add title here  
 Add text here  
