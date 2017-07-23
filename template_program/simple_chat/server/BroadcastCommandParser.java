@@ -1,4 +1,4 @@
-﻿package simple_chat.server;
+package simple_chat.server;
 import java.util.*;
 public class BroadcastCommandParser implements CommandParser {
     private final String NICK = "nick";

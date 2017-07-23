@@ -1,4 +1,4 @@
-﻿package simple_chat.server;
+package simple_chat.server;
 import java.util.*;
 import java.security.*;
 import java.io.*;

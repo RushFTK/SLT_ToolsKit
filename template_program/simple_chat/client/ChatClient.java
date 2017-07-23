@@ -1,4 +1,4 @@
-﻿package simple_chat.client;
+package simple_chat.client;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;

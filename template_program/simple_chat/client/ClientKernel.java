@@ -1,4 +1,4 @@
-﻿package simple_chat.client;
+package simple_chat.client;
 import java.io.*;
 import java.net.*;
 import java.util.*;
