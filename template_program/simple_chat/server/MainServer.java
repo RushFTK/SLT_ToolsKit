@@ -11,7 +11,9 @@ public class MainServer extends Thread {
     int port = 1984;
     int clients = 8;
     private boolean newPort = true;
+    //服务器打开时，占用端口的socket.
     private ServerSocket sSock;
+    //临时变量
     private Socket sock;
     public ConnectionKeeper ck;
     public static DataSource ds;
@@ -30,8 +32,10 @@ public class MainServer extends Thread {
                     System.out.println("Server Listening at port: " + sSock.getLocalPort());
                     newPort = false;
                 }
+                //socket.accept:获取接收到的链接。
                 sock = sSock.accept();
                 ck.add(sock);
+                //TODOs:分析为什么要把简历的socket给关上？
                 sSock.close();
             } catch(Exception e) {
                 String message = e.getMessage();
@@ -61,6 +65,8 @@ public class MainServer extends Thread {
             System.out.println("Usage: java jchat.server.MainServer <port>\nAttempting to use default port 3500");
         } else {
             try {
+                //运行Server时第一个参数作为自定义的端口号
+                //TODOs:增加格式限定等
                 port = Integer.parseInt(arg[0]);
             } catch(NumberFormatException nfe) {
                 System.out.println("Attempting to use default port 3500");
