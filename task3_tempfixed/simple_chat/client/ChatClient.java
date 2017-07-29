@@ -84,9 +84,11 @@ public class ChatClient extends JFrame implements KeyListener, ActionListener, F
             } else {
                 addMsg("<font color=\"#ff0000\">connect failed！</font>");
             }
-        } catch(Exception e) { 
+        } 
+        catch( Exception e)
+        { 
         	addMsg("Error Occur:" + e.getMessage());
-        	}
+        }
     }
     //核心方法，调用sendMessage向远端发送信息
     private void send() {
