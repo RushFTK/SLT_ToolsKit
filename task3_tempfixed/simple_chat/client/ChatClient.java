@@ -117,7 +117,7 @@ public class ChatClient extends JFrame implements KeyListener, ActionListener, F
             if(e.getSource() == txtPort) txtNick.requestFocus();
         }
     }
-    //按下按钮后的操作
+    //按下按钮后的操作 (为什么不放在keyPressed)
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==buttonConnect) connect();
         if(e.getSource()==buttonSend) send();

@@ -159,6 +159,7 @@ class ClientMsgListener extends Thread{
                 BufferedInputStream buffIn = new BufferedInputStream(s.getInputStream());
                 DataInputStream dataIn = new DataInputStream(buffIn);
                 while(running) {
+                	//在创建新的Socket连接后(连续多次点击Connect)，因Socket链接已经被关闭，这里会产生一个Socket closed异常。
                     StringBuffer strBuff = new StringBuffer();
                     int c;
                     while( (c=dataIn.read()) != ClientKernel.MSGENDCHAR) {
@@ -169,7 +170,8 @@ class ClientMsgListener extends Thread{
                 dataIn.close();
                 buffIn.close();
                 stop();
-        } catch(IOException ioe) {
+        }
+        catch(IOException ioe) {
             ioe.printStackTrace();
         } finally {
             hasStoped = true;
