@@ -1,3 +1,5 @@
+// Connection Keeper 用于维护服务器端与若干客户器端的socket链接。
+
 package simple_chat.server;
 import java.io.*;
 import java.net.*;
