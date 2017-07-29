@@ -19,7 +19,8 @@ public class ClientKernel {
     private ClientMsgSender cms;
     private ClientMsgListener cml;
     /** Creates a new instance of ClientKernel */
-    public ClientKernel(String server, int port) {
+    public ClientKernel(String server, int port) throws Exception
+    {
         this.port = port;
         nick = "" + port;
         serverAd = server;
@@ -30,12 +31,13 @@ public class ClientKernel {
             cml = new ClientMsgListener(this, sock);
         }
     }
-    public void connect() {
+    public void connect() throws IOException {
         try {
             sock = new Socket(serverAd, port);
             isConnected = true;
         } catch(IOException ioe ) {
-            ioe.printStackTrace();
+           ioe.printStackTrace();
+           throw ioe;
         }
     }
     public int getPort() {
@@ -83,7 +85,7 @@ public class ClientKernel {
     public boolean isConnected() {
         return isConnected;
     }
-    public static void main(String args[]) {
+    public static void main(String args[]) throws Exception{
         new ClientKernel("localhost", 1984);
     }
 }

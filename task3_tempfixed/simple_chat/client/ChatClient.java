@@ -76,6 +76,7 @@ public class ChatClient extends JFrame implements KeyListener, ActionListener, F
         try {
             if(ck!=null) ck.dropMe();
             ck = new ClientKernel(txtHost.getText(), Integer.parseInt(txtPort.getText()));
+            System.out.println("passed");
             ck.setNick(txtNick.getText());
             if(ck.isConnected()) {
                 ck.addClient(this);
@@ -87,7 +88,8 @@ public class ChatClient extends JFrame implements KeyListener, ActionListener, F
         } 
         catch( Exception e)
         { 
-        	addMsg("Error Occur:" + e.getMessage());
+        	addMsg("<font color=\"#ff0000\">Error Occur:</font>" + e.getMessage());
+        	e.printStackTrace();
         }
     }
     //核心方法，调用sendMessage向远端发送信息
@@ -130,8 +132,7 @@ public class ChatClient extends JFrame implements KeyListener, ActionListener, F
     public void focusLost(FocusEvent e) {
        if(e.getSource()==txtPort && txtPort.getText().equals("")) txtPort.setText(ChatClient.portText);
        if(e.getSource()==txtHost && txtHost.getText().equals("")) txtHost.setText(ChatClient.serverText);
-       if(e.getSource()==txtNick && txtNick.getText().equals(ChatClient.nickText)) 
-                                                            txtNick.setText(ChatClient.nickText);
+       if(e.getSource()==txtNick && txtNick.getText().equals("")) txtNick.setText(ChatClient.nickText);
     }
     //构造中间的消息事件框，使用html显示
     class ClientHistory extends JEditorPane {
