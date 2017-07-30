@@ -1,3 +1,5 @@
+//这个接口的意义是？
+
 package simple_chat.server;
 public interface CommandParser {
     

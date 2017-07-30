@@ -1,3 +1,5 @@
+//Connection Keeper 用户通过列表记录该服务器端与多个客户端的Socket链接。
+
 package simple_chat.server;
 import java.io.*;
 import java.net.*;
