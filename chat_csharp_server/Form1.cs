@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace chat_csharp_server
+namespace Chat_CSharp_Server
 {
     public partial class Form1 : Form
     {

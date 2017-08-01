@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace chat_csharp
+namespace Chat_CSharp
 {
     static class Program
     {

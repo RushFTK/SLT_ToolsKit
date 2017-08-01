@@ -1,4 +1,4 @@
-﻿namespace chat_csharp_server
+﻿namespace Chat_CSharp_Server
 {
     partial class Form1
     {

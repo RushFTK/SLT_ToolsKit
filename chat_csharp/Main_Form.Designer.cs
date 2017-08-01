@@ -1,4 +1,4 @@
-﻿namespace chat_csharp
+﻿namespace Chat_CSharp
 {
     partial class Main_Form
     {

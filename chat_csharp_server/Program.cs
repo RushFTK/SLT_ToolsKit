@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace chat_csharp_server
+namespace Chat_CSharp_Server
 {
     /// <summary>管理程序的启动</summary>
     static class Start
@@ -20,7 +20,7 @@ namespace chat_csharp_server
         [STAThread]
         static void Main(string[] args)
         {
-
+            show_judger(args);
             if (!show_console)
             {
                 // TODOs:控制台窗体隐藏的调用
@@ -34,13 +34,26 @@ namespace chat_csharp_server
         }
 
         /// <summary>读取开启程序的参数</summary>
-        /// <param name="args"></param>
+        /// <param name="args">main函数的参数列表</param>
         static void show_judger(string[] args)
         {
-            if )
 #if DEBUG
-            //show_console = true; show_console = false;
+            show_console = true; show_gui = false;  return;
 #endif
+            /// <summary>是否读取到console关键词</summary>
+            bool get_console = false;
+            /// <summary>是否读取到nogui关键词</summary>
+            bool get_gui = false;
+            if (args.Length != 0)
+            {
+                for (int i = 0;i < args.Length;i++)
+                {
+                    if (args[i] == "-console")  get_console = true;
+                    if (args[i] == "-gui")    get_gui = true;
+                }
+            }
+            show_console = get_console;
+            show_gui = get_gui;
         }
     }
 }
