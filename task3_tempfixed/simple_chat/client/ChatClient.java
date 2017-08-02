@@ -81,7 +81,7 @@ public class ChatClient extends JFrame implements KeyListener, ActionListener, F
             if(ck.isConnected()) {
                 ck.addClient(this);
                 //addMsg就是封装了一个对historyWindows增加最后一行的方法。
-                addMsg("<font color=\"#00ff00\">connected! Local Port:" + ck.getLocalPort() + "</font>");
+                addMsg("<font color=\"#00ff00\">链接成功! Local Port:" + ck.getLocalPort() + "</font>");
             } else {
                 addMsg("<font color=\"#ff0000\">connect failed！</font>");
             }
@@ -138,19 +138,33 @@ public class ChatClient extends JFrame implements KeyListener, ActionListener, F
     class ClientHistory extends JEditorPane {
         public ClientHistory() {
             super("text/html", "" + ChatClient.appName);
+            //setcharset("UTF-8");
             setEditable(false);
             setAutoscrolls(true);
         }
+        //遍历消息框对应的html文件，找到"</body>"标签，在前面插入新的消息
         public void addText(String str) {
+        	inserthtml("</body>","<br>" + str,true);
+        }
+        
+        public void setcharset(String encode)
+        {
+        	inserthtml("<html>","<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">",false);
+        }
+        //将一段消息插入到特定代码段之前
+        //flag = 特定代码段的标签；str = 待插入的文字；front = true在之前插入，front = false 在之后插入
+        public void inserthtml(String flag,String str,Boolean front)
+        {
             String html = getText();
-            int end = html.lastIndexOf("</body>");
+            int end = html.lastIndexOf(flag);
+            if (!front)	end += flag.length();
             String startStr = html.substring(0, end);
             String endStr = html.substring(end, html.length());
-            String newHtml = startStr + "<br>" + str + endStr;
+            String newHtml = startStr + str + endStr;
             setText(newHtml);
             setSelectionStart(newHtml.length()-1);
             setSelectionEnd(newHtml.length());
-         }
+        }
         public void clear() {
             setText("");
         }
