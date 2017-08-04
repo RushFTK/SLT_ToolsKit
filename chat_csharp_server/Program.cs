@@ -23,7 +23,7 @@ namespace Chat_CSharp_Server
             show_judger(args);
             if (!show_console)
             {
-                // TODOs:控制台窗体隐藏的调用
+                // TODO:控制台窗体隐藏的调用
             }
             if (show_gui)
             {
