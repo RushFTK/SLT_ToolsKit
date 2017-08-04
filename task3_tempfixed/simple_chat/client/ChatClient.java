@@ -138,7 +138,7 @@ public class ChatClient extends JFrame implements KeyListener, ActionListener, F
     class ClientHistory extends JEditorPane {
         public ClientHistory() {
             super("text/html", "" + ChatClient.appName);
-            //setcharset("UTF-8");
+            setcharset("UTF-8");
             setEditable(false);
             setAutoscrolls(true);
         }
