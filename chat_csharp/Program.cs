@@ -14,9 +14,15 @@ namespace Chat_CSharp
         [STAThread]
         static void Main()
         {
+#if DEBUG
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Form_CreateConnection());
+#else
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Main_Form());
+#endif
         }
     }
 }

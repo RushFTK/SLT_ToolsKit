@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,6 +17,7 @@ namespace Chat_CSharp_Server.Manager
         private int id;
         public string username { get; private set; }
         public List<User> friendlist { get; private set; }
+        public Socket client_connection { get; private set; }
 
         User()
         {

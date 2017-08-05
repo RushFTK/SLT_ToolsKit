@@ -20,6 +20,7 @@ namespace Chat_CSharp_Server
         [STAThread]
         static void Main(string[] args)
         {
+
             show_judger(args);
             if (!show_console)
             {
@@ -29,7 +30,7 @@ namespace Chat_CSharp_Server
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new Form1());
+                Application.Run(new Form_Main());
             }
         }
 
