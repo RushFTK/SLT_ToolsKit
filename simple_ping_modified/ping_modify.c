@@ -7,7 +7,9 @@ struct proto	proto_v6 = { proc_v6, send_v6, NULL, NULL, 0, IPPROTO_ICMPV6 };
 #endif
 
 int	datalen = 56;		/* data that goes with ICMP echo request */
-int options=0;
+int options=0;			/*代表当前运行时包含何种指令
+						  第一位:BROADCAST 代表使用-b广播
+						  第二位：TTL 代表使用-t，设置了生存时间*/
 int ttl;
 main(int argc, char **argv)
 {
@@ -26,7 +28,8 @@ main(int argc, char **argv)
 			options |= BROADCAST;  
 			break;
 		case 't':
-			ttl = strtol(optarg, &e, 10);
+			ttl = strtol(optarg, &e, 10);	/*把一个char型转换为lf型*/
+			// = sscanf(optarg,...)
 			options |= TTL;
 			break;
 		case '?':
@@ -240,6 +243,9 @@ readloop(void)
 	setuid(getuid());		/* don't need special permissions any more */
 
 	size = 60 * 1024;		/* OK if setsockopt fails */
+	// SOL_SOCKET 包括IPv4和IPv6的全部操作
+	// TODO: 具体意义.
+	// TODO: 关于广播的操作只在操作集SOL_SOCKET中，那个是对IPV4，IPV6均有用的，限制IPV4的方法
 	setsockopt(sockfd, SOL_SOCKET, SO_RCVBUF, &size, sizeof(size));
 	//guang bo
 	if (options & BROADCAST)
@@ -247,7 +253,7 @@ readloop(void)
 	//she zhi TTL
 	if (options & TTL)
 	{	printf("ttl=%d\n",ttl);
-		setsockopt(sockfd, IPPROTO_IP, IP_TTL, &ttl, sizeof(ttl));
+		setsockopt(sockfd, IPPROTO_IP, IP_TTL, &ttl, sizeof(ttl)); //TPPROTO_IP 仅适用于IPV4的全部操作集
 	}
 
 	sig_alrm(SIGALRM);		/* send first packet */

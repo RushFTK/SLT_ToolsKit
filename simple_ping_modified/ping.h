@@ -29,7 +29,7 @@
 #define BUFSIZE		1500
 #define MAXLINE         4096
 #define BROADCAST       1
-#define TTL             1
+#define TTL             2
 
 /* globals */
 char	 recvbuf[BUFSIZE];
