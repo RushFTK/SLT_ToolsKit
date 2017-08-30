@@ -39,7 +39,7 @@ namespace Chat_CSharp_Server.Manager
             throw new NotImplementedException();
         }
 
-        static bool 
+        //static bool 
     }
     class User_manager
     {

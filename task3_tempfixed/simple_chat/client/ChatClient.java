@@ -8,9 +8,9 @@ public class ChatClient extends JFrame implements KeyListener, ActionListener, F
     public static final String serverText = "127.0.0.1";
     public static final String portText = "3500";
     public static final String nickText = "YourName";
-    JPanel northPanel, southPanel, centerPanel;
+    JPanel northPanel, southPanel, centerPanel, funtionsPanel;
     JTextField txtHost, txtPort, msgWindow, txtNick;
-    JButton buttonConnect, buttonSend;
+    JButton buttonConnect, buttonSend, buttonHelp;
     JScrollPane sc;
     ClientKernel ck;
     ClientHistory historyWindow;
@@ -45,18 +45,24 @@ public class ChatClient extends JFrame implements KeyListener, ActionListener, F
         txtPort.addFocusListener(this);
         buttonConnect.addKeyListener(this);
         this.add(northPanel, BorderLayout.NORTH);
-        //创建Sourth
+        //创建South
         southPanel = new JPanel();
         southPanel.add(msgWindow = new JTextField(20));
         southPanel.add(buttonSend = new JButton("Send"));
         buttonSend.addActionListener(this);
         msgWindow.addKeyListener(this);
         add(southPanel, BorderLayout.SOUTH);
+        //创建EAST
+        funtionsPanel = new JPanel(new GridLayout(0,5));
+        funtionsPanel.add(buttonHelp = new JButton("Help"));
+        centerPanel.add(funtionsPanel);
         //创建Center
+        centerPanel = new JPanel();
         historyWindow = new ClientHistory();
         sc = new JScrollPane(historyWindow);
         sc.setAutoscrolls(true);
-        this.add(sc, BorderLayout.CENTER);
+        centerPanel.add(sc);
+        this.add(centerPanel, BorderLayout.CENTER);
     }
    //主函数
    public static void main(String args[]) {

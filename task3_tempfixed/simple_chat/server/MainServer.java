@@ -35,7 +35,6 @@ public class MainServer extends Thread {
                 //socket.accept:获取接收到的链接。
                 sock = sSock.accept();
                 ck.add(sock);
-                System.out.println("overhere");
                 //TODOs:分析为什么要把建立的socket给关上？虽然有while(true)，但没有运行到这里。
                 sSock.close();
             } catch(Exception e) {

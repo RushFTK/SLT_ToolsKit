@@ -31,11 +31,13 @@ namespace Chat_CSharp_Server
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new Form1());
             }
+            
         }
+
 
         /// <summary>读取开启程序的参数</summary>
         /// <param name="args">main函数的参数列表</param>
-        static void show_judger(string[] args)
+        static void show_judger(string[] args) 
         {
 #if DEBUG
             show_console = true; show_gui = false;  return;

@@ -1,3 +1,4 @@
+//BroadcastCommand：翻译发送过的命令.
 package simple_chat.server;
 import java.util.*;
 public class BroadcastCommandParser implements CommandParser {
@@ -10,7 +11,7 @@ public class BroadcastCommandParser implements CommandParser {
     private final String WHO_AM_I = "whoami";
     private final String MSG = "msg";
     private final String STATS = "stats";
-        private final String tab = "&nbsp;&nbsp;&nbsp;";
+    private final String tab = "&nbsp;&nbsp;&nbsp;";
     private DataSource ds;
     private final int sek = 1000;
     private final int min = 60*sek;
@@ -19,6 +20,7 @@ public class BroadcastCommandParser implements CommandParser {
     public BroadcastCommandParser() {
         System.out.println("BroadcastCommandParser");
     }
+    //"/"+字符串后运行的指令
     public  void runCommand(ConnectedClient cc, String str) {
         try {
             if(ds == null) {
