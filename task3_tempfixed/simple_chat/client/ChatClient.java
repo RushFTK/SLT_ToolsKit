@@ -8,9 +8,9 @@ public class ChatClient extends JFrame implements KeyListener, ActionListener, F
     public static final String serverText = "127.0.0.1";
     public static final String portText = "3500";
     public static final String nickText = "YourName";
-    JPanel northPanel, southPanel, centerPanel, funtionsPanel;
+    JPanel OriginalPanel, northPanel, southPanel, centerPanel, NewPanel, OnlineUserPanel;
     JTextField txtHost, txtPort, msgWindow, txtNick;
-    JButton buttonConnect, buttonSend, buttonHelp;
+    JButton buttonConnect, buttonSend, buttonHelp,buttonWhoAmI;
     JScrollPane sc;
     ClientKernel ck;
     ClientHistory historyWindow;
@@ -23,6 +23,9 @@ public class ChatClient extends JFrame implements KeyListener, ActionListener, F
         txtPort.setText("3500");
     }
     public void uiInit() {
+    	OriginalPanel = new JPanel();
+    	OriginalPanel.setLayout(new BorderLayout());
+    	OriginalPanel.setSize(450, 500);
         setLayout(new BorderLayout());
         //创建North
         northPanel = new JPanel(new GridLayout(0,2));
@@ -36,7 +39,11 @@ public class ChatClient extends JFrame implements KeyListener, ActionListener, F
         northPanel.add(new JLabel(""));
         northPanel.add(new JLabel(""));
         northPanel.add(buttonConnect = new JButton("Connect"));
+        northPanel.add(buttonHelp = new JButton("Help"));
+        northPanel.add(buttonWhoAmI = new JButton("WhoAmI?"));
         buttonConnect.addActionListener(this);
+        buttonHelp.addActionListener(this);
+        buttonWhoAmI.addActionListener(this);
         txtHost.addKeyListener(this);
         txtHost.addFocusListener(this);
         txtNick.addFocusListener(this);
@@ -44,31 +51,37 @@ public class ChatClient extends JFrame implements KeyListener, ActionListener, F
         txtPort.addKeyListener(this);
         txtPort.addFocusListener(this);
         buttonConnect.addKeyListener(this);
-        this.add(northPanel, BorderLayout.NORTH);
+        buttonHelp.addKeyListener(this);
+        buttonWhoAmI.addKeyListener(this);
+        OriginalPanel.add(northPanel, BorderLayout.NORTH);
         //创建South
         southPanel = new JPanel();
         southPanel.add(msgWindow = new JTextField(20));
         southPanel.add(buttonSend = new JButton("Send"));
         buttonSend.addActionListener(this);
         msgWindow.addKeyListener(this);
-        add(southPanel, BorderLayout.SOUTH);
-        //创建EAST
-        funtionsPanel = new JPanel(new GridLayout(0,5));
-        funtionsPanel.add(buttonHelp = new JButton("Help"));
-        centerPanel.add(funtionsPanel);
+        OriginalPanel.add(southPanel, BorderLayout.SOUTH);
         //创建Center
-        centerPanel = new JPanel();
         historyWindow = new ClientHistory();
         sc = new JScrollPane(historyWindow);
         sc.setAutoscrolls(true);
-        centerPanel.add(sc);
-        this.add(centerPanel, BorderLayout.CENTER);
+        OriginalPanel.add(sc, BorderLayout.CENTER);
+        this.add(OriginalPanel,BorderLayout.WEST);
+        //右侧新边栏
+        NewPanel = new JPanel();
+        NewPanel.setSize(100, 500);
+        NewPanel.setLayout(new BorderLayout());
+        OnlineUserPanel = new JPanel(new GridLayout(0,1));
+        OnlineUserPanel.add(new JLabel("Now Offline:"));
+        NewPanel.add(OnlineUserPanel, BorderLayout.NORTH);
+        this.add(NewPanel,BorderLayout.EAST);
+        
     }
    //主函数
    public static void main(String args[]) {
         ChatClient client = new ChatClient();
         client.setTitle(client.appName);
-        client.setSize(450, 500);
+        client.setSize(550, 500);
         client.setLocation(100,100);
         client.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         client.setVisible(true);
@@ -81,8 +94,8 @@ public class ChatClient extends JFrame implements KeyListener, ActionListener, F
     private void connect() {
         try {
             if(ck!=null) ck.dropMe();
+            
             ck = new ClientKernel(txtHost.getText(), Integer.parseInt(txtPort.getText()));
-            System.out.println("passed");
             ck.setNick(txtNick.getText());
             if(ck.isConnected()) {
                 ck.addClient(this);
@@ -95,16 +108,30 @@ public class ChatClient extends JFrame implements KeyListener, ActionListener, F
         catch( Exception e)
         { 
         	addMsg("<font color=\"#ff0000\">Error Occur:</font>" + e.getMessage());
+        	if (e.getMessage().equals("Connection refused: connect"))
+        	{
+        		addMsg("<font color=\"#ff0000\">检查IP或端口输入是否有误</font>");
+        	}	
         	e.printStackTrace();
         }
     }
     //核心方法，调用sendMessage向远端发送信息
     private void send() {
-        String toSend = msgWindow.getText();
-        ck.sendMessage(toSend);
-        lastMsg = "" + toSend;
+        send(msgWindow.getText());
+        
+    }
+    //模拟用户输入str字符串并发送消息
+    private void send(String str)
+    {
+    	if (ck == null) {addMsg("<font color=\"#ff0000\">你必须链接服务器</font>"); return;}
+        ck.sendMessage(str);
+        System.out.println("Client sent:"+str);
+        //清空消息
+        lastMsg = "" + str;
         msgWindow.setText("");
     }
+    
+    
     public void keyPressed(KeyEvent e) {
     }
     //KeyEvent.getSource()返回控件对象，代表事件的来源。只有拥有KeyListener的控件才会被识别
@@ -127,6 +154,8 @@ public class ChatClient extends JFrame implements KeyListener, ActionListener, F
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==buttonConnect) connect();
         if(e.getSource()==buttonSend) send();
+        if(e.getSource()==buttonHelp) send("/help");
+        if(e.getSource()==buttonWhoAmI) send("/whoami");
     }
     //当鼠标放上去时，自动输入框内清除原先的字段以便于输入
     public void focusGained(FocusEvent e) {

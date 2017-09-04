@@ -121,8 +121,8 @@ class ClientMsgSender extends Thread {
             while(running) {
                 while(msgList.size()>0) {
                 	//removeFirst本质上与pop类似。
-                	System.out.println("catch_here");
                     String msg = ((String)(msgList.removeFirst()));
+                    System.out.println(msg);
                     char[] data = msg.toCharArray();
                     for(int i=0;i<data.length;i++) dataOut.write((int)data[i]);
                     dataOut.write(ClientKernel.MSGENDCHAR);

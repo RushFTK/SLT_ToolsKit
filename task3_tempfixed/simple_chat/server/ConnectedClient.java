@@ -32,6 +32,7 @@ public class ConnectedClient {
     }
     public void sendMessage(String str) {
         msgSend.addMessage(str);
+        System.out.println("Send to Port"+portNumber+":"+str);
     }
     public void sendTo(String user, String msg) {
         ck.sendTo(this, user, msg);

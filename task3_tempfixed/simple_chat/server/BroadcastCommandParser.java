@@ -11,6 +11,7 @@ public class BroadcastCommandParser implements CommandParser {
     private final String WHO_AM_I = "whoami";
     private final String MSG = "msg";
     private final String STATS = "stats";
+    private final String HELP = "help";
     private final String tab = "&nbsp;&nbsp;&nbsp;";
     private DataSource ds;
     private final int sek = 1000;
@@ -46,6 +47,10 @@ public class BroadcastCommandParser implements CommandParser {
                     msg(cc, strTok.nextToken(), strTok);
                 else if(command.equalsIgnoreCase(STATS))
                     stats(cc);
+                else if(command.equalsIgnoreCase(HELP))
+                    help(cc);
+                else
+                	cc.sendMessage("<p style=\"color:rgb(255,0,0);\">Error:Invild command.</p>");
             }
         } catch(Exception e) {
             System.out.println("CommandParser: " + e.getMessage());
@@ -82,6 +87,7 @@ public class BroadcastCommandParser implements CommandParser {
         }
         return str;
     }
+    //私聊
     private void msg(ConnectedClient cc, String user, StringTokenizer strTok) {
         StringBuffer strBuff = new StringBuffer();
         while(strTok.hasMoreTokens())
@@ -89,6 +95,7 @@ public class BroadcastCommandParser implements CommandParser {
         
         cc.sendTo(user, cc.nick + ":" + strBuff.toString());
     }
+    //当前用户列表
     private  void users(ConnectedClient cc) {
         LinkedList users = (LinkedList)((cc.getConnectionKeeper().users()).clone());
         String msg = "Current Connected Users: <br>";
@@ -153,6 +160,12 @@ public class BroadcastCommandParser implements CommandParser {
             cc.sendMessage("Invalid user/pass, your nick is set to " + cc.nick);
         }
     }
+    
+    private void help(ConnectedClient cc) 
+    {
+        cc.sendMessage("following order vaild:");
+    }
+    
     private  void exit(ConnectedClient cc) {
         cc.sendMessage("Server: You are being disconected!");
         try { Thread.sleep(50); } catch(Exception e) {}
