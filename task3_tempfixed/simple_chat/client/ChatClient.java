@@ -10,8 +10,11 @@ public class ChatClient extends JFrame implements KeyListener, ActionListener, F
     public static final String nickText = "YourName";
     JPanel OriginalPanel, northPanel, southPanel, centerPanel, NewPanel, OnlineUserPanel;
     JTextField txtHost, txtPort, msgWindow, txtNick;
-    JButton buttonConnect, buttonSend, buttonHelp,buttonWhoAmI;
+    JButton buttonConnect, buttonSend, buttonHelp,buttonWhoAmI,buttoncnick,buttonregister,buttonexit,buttonmsg,buttonstates,buttonusers;
     JScrollPane sc;
+    int signup;
+    String newuser,newpwd;
+    signup sp;
     ClientKernel ck;
     ClientHistory historyWindow;
     private String lastMsg = "";
@@ -41,9 +44,15 @@ public class ChatClient extends JFrame implements KeyListener, ActionListener, F
         northPanel.add(buttonConnect = new JButton("Connect"));
         northPanel.add(buttonHelp = new JButton("Help"));
         northPanel.add(buttonWhoAmI = new JButton("WhoAmI?"));
+        northPanel.add(buttonstates = new JButton("STATS"));
+        northPanel.add(buttonregister = new JButton("register"));
+        northPanel.add(buttonusers = new JButton("USERS"));
         buttonConnect.addActionListener(this);
         buttonHelp.addActionListener(this);
         buttonWhoAmI.addActionListener(this);
+        buttonstates.addActionListener(this);
+        buttonusers.addActionListener(this);
+        buttonregister.addActionListener(this);
         txtHost.addKeyListener(this);
         txtHost.addFocusListener(this);
         txtNick.addFocusListener(this);
@@ -53,6 +62,9 @@ public class ChatClient extends JFrame implements KeyListener, ActionListener, F
         buttonConnect.addKeyListener(this);
         buttonHelp.addKeyListener(this);
         buttonWhoAmI.addKeyListener(this);
+        buttonstates.addKeyListener(this);
+        buttonusers.addKeyListener(this);
+        buttonregister.addKeyListener(this);
         OriginalPanel.add(northPanel, BorderLayout.NORTH);
         //创建South
         southPanel = new JPanel();
@@ -148,6 +160,7 @@ public class ChatClient extends JFrame implements KeyListener, ActionListener, F
             //其余只是将焦点移动到下一行
             if(e.getSource() == txtHost) txtPort.requestFocus();
             if(e.getSource() == txtPort) txtNick.requestFocus();
+            
         }
     }
     //按下按钮后的操作 (为什么不放在keyPressed)
@@ -156,6 +169,23 @@ public class ChatClient extends JFrame implements KeyListener, ActionListener, F
         if(e.getSource()==buttonSend) send();
         if(e.getSource()==buttonHelp) send("/help");
         if(e.getSource()==buttonWhoAmI) send("/whoami");
+        if(e.getSource()==buttonstates) send("/stats");
+        if(e.getSource()==buttonusers) send("/users");
+        if(e.getSource()==buttonregister) {
+        	sp=new signup();
+        	sp.uiInit();
+        	sp.setTitle(sp.appName);
+            sp.setSize(300, 140);
+            sp.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+            sp.setLocation(150,150);
+        	sp.setVisible(true);
+        	
+        	if(sp.sign()==0) {
+        		newuser=sp.getName();
+        		newpwd=sp.getpassword();
+        	}
+        	
+        }
     }
     //当鼠标放上去时，自动输入框内清除原先的字段以便于输入
     public void focusGained(FocusEvent e) {
